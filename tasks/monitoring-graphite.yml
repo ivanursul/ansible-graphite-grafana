@@ -1,8 +1,4 @@
 ---
-- hosts: all
-  become: yes
-  become_method: sudo
-
   tasks:
   - name: Update
     apt: update_cache=yes
