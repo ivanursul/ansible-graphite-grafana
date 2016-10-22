@@ -1,2 +1,3 @@
 ---
-# tasks file for iursul.graphite-grafana
+- include: monitoring-graphite.yml
+- include: monitoring-grafana.yml
