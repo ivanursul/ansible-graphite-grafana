@@ -1,5 +1,5 @@
 ---
-- hosts: rngr-monitoring
+- hosts: all
   become: yes
   become_method: sudo
 
@@ -29,7 +29,7 @@
   - name: Start carbon cache service
     command: sudo service carbon-cache start
 
-- hosts: rngr-monitoring
+- hosts: all
   become: yes
   become_method: sudo
   vars:
@@ -45,7 +45,7 @@
   roles:
     - ANXS.postgresql
 
-- hosts: rngr-monitoring
+- hosts: all
   become: yes
   become_method: sudo
   tasks:

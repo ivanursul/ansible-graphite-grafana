@@ -1,5 +1,5 @@
 ---
-- hosts: rngr-monitoring
+- hosts: all
   become: yes
   become_method: sudo
   tasks:
@@ -23,7 +23,7 @@
   - name: Start services
     command: sudo service grafana-server restart
 
-- hosts: rngr-monitoring
+- hosts: all
   sudo: yes
   sudo_user: postgres
   tasks:
