@@ -1,29 +1,29 @@
----
-  tasks:
-  - name: Update
-    apt: update_cache=yes
-  - name: Upgrade
-    command: sudo apt-get upgrade -qq
-  - name: Installing graphite packages
-    apt: pkg={{ item }} state=latest
-    with_items:
-    - build-essential
-    - graphite-web
-    - graphite-carbon
-    - python-dev
-    - apache2
-    - libapache2-mod-wsgi
-    - libpq-dev
-    - python-psycopg2
 
-  - name: Configure storage schemas
-    action: template src=storage-schemas.conf.j2 dest=/etc/carbon/storage-schemas.conf
-  - name: Copy the default aggregation
-    command: sudo cp /usr/share/doc/graphite-carbon/examples/storage-aggregation.conf.example /etc/carbon/storage-aggregation.conf
-  - name: Enable carbon cache
-    action: template src=graphite-carbon.j2 dest=/etc/default/graphite-carbon
-  - name: Start carbon cache service
-    command: sudo service carbon-cache start
+tasks:
+- name: Update
+  apt: update_cache=yes
+- name: Upgrade
+  command: sudo apt-get upgrade -qq
+- name: Installing graphite packages
+  apt: pkg={{ item }} state=latest
+  with_items:
+  - build-essential
+  - graphite-web
+  - graphite-carbon
+  - python-dev
+  - apache2
+  - libapache2-mod-wsgi
+  - libpq-dev
+  - python-psycopg2
+
+- name: Configure storage schemas
+  action: template src=storage-schemas.conf.j2 dest=/etc/carbon/storage-schemas.conf
+- name: Copy the default aggregation
+  command: sudo cp /usr/share/doc/graphite-carbon/examples/storage-aggregation.conf.example /etc/carbon/storage-aggregation.conf
+- name: Enable carbon cache
+  action: template src=graphite-carbon.j2 dest=/etc/default/graphite-carbon
+- name: Start carbon cache service
+  command: sudo service carbon-cache start
 
 - hosts: all
   become: yes
