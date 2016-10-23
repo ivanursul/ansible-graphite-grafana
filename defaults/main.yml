@@ -1,2 +1,11 @@
 ---
 # defaults file for iursul.graphite-grafana
+postgresql_users:
+  - name: graphite
+    pass: graphite
+    encrypted: no
+postgresql_databases:
+  - name: graphite
+    owner: graphite
+  - name: grafana
+    owner: graphite
