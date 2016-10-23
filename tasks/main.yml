@@ -1,3 +1,7 @@
 ---
-- include: monitoring-graphite.yml
-- include: monitoring-grafana.yml
+- name: Installing postgres extension
+  become: yes
+  become_method: sudo
+  command: ansible-galaxy install ANXS.postgresql
+#- include: monitoring-graphite.yml
+#- include: monitoring-grafana.yml
