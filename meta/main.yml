@@ -205,4 +205,4 @@ galaxy_info:
     # alphanumeric characters. Maximum 20 tags per role.
 
 dependencies:
-  - { role: './roles/ANXS.postgresql' }
+  - { role: ANXS.postgresql }
