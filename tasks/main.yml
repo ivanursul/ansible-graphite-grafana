@@ -3,5 +3,22 @@
   become: yes
   become_method: sudo
   command: ansible-galaxy install ANXS.postgresql
+
+- hosts: all
+  become: yes
+  become_method: sudo
+  vars:
+    postgresql_users:
+      - name: graphite
+        pass: graphite
+        encrypted: no
+    postgresql_databases:
+      - name: graphite
+        owner: graphite
+      - name: grafana
+        owner: graphite
+  roles:
+    - ANXS.postgresql
+
 #- include: monitoring-graphite.yml
 #- include: monitoring-grafana.yml

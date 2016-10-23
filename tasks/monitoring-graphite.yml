@@ -23,21 +23,6 @@
 - name: Start carbon cache service
   command: sudo service carbon-cache start
 
-- hosts: all
-  become: yes
-  become_method: sudo
-  vars:
-    postgresql_users:
-      - name: graphite
-        pass: graphite
-        encrypted: no
-    postgresql_databases:
-      - name: graphite
-        owner: graphite
-      - name: grafana
-        owner: graphite
-  roles:
-    - ANXS.postgresql
 
 - hosts: all
   become: yes
